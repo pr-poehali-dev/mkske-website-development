@@ -9,12 +9,28 @@ const IMG_WELD = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cf
 const IMG_TOWER = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/files/2bafc211-3039-45bf-9bbb-f6869299fbfd.jpg';
 const IMG_PLASMA = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/files/468575fb-5f9f-4cf9-ad83-567a2ec35f83.jpg';
 
+const OBJ_1 = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/bucket/15f8823a-3b7d-4f16-81c0-0ea39f17bd50.jpg';
+const OBJ_2 = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/bucket/4c49eee5-5922-4e47-8875-90a45b082a95.jpeg';
+const OBJ_3 = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/bucket/bcdd1f29-a411-4655-867a-2dbffefdbd59.jpeg';
+const OBJ_4 = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/bucket/916b2649-e67c-493d-842e-74ce4add8bc7.jpg';
+const OBJ_5 = 'https://cdn.poehali.dev/projects/178f5995-21aa-45a7-bbea-539cff846d0a/bucket/5fbd119f-c3db-4c01-85e2-7d5fbeef25cc.jpeg';
+
+const galleryImgs = [OBJ_4, OBJ_1, OBJ_3, OBJ_2, OBJ_5, OBJ_4, OBJ_1, OBJ_2];
+
+const qcStages = [
+  { title: 'Входной контроль', icon: 'PackageSearch', desc: 'Проверка сертификатов и качества поступающего металлопроката и комплектующих' },
+  { title: 'Производственный контроль', icon: 'Cog', desc: 'Контроль геометрии, сварных швов и мехобработки на каждой операции' },
+  { title: 'Контроль готовой продукции', icon: 'ClipboardCheck', desc: 'Дефектоскопия швов, проверка размеров и антикоррозийного покрытия' },
+  { title: 'Контроль хранения', icon: 'Warehouse', desc: 'Соблюдение условий складирования готовых металлоконструкций' },
+  { title: 'Контроль отгрузки', icon: 'TruckIcon', desc: 'Комплектность, маркировка и надёжное крепление при погрузке' },
+];
+
 const nav = [
   { label: 'О нас', id: 'about' },
   { label: 'Продукция', id: 'products' },
   { label: 'Оборудование', id: 'equipment' },
   { label: 'Цикл', id: 'cycle' },
-  { label: 'Фундаменты', id: 'foundations' },
+  { label: 'Контроль', id: 'quality' },
   { label: 'Галерея', id: 'gallery' },
   { label: 'Контакты', id: 'contacts' },
 ];
@@ -233,7 +249,7 @@ export default function Index() {
       <Section id="about" className="py-24">
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative rounded-3xl overflow-hidden card-hover glow-copper group">
-            <img src={IMG_TOWER} alt="Цех МК СКЭ" className="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src={OBJ_4} alt="Объекты МК СКЭ" className="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             <div className="absolute bottom-6 left-6 glass rounded-xl px-4 py-3">
               <div className="text-teal font-display font-semibold text-lg">2600 м²</div>
@@ -329,31 +345,40 @@ export default function Index() {
         </div>
       </Section>
 
-      {/* FOUNDATIONS */}
-      <Section id="foundations" className="py-24">
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="text-teal font-medium text-sm tracking-widest mb-3 uppercase">Фундаменты</div>
-            <h2 className="font-display font-semibold text-4xl md:text-5xl mb-6 leading-tight">
-              Надёжное <span className="text-gradient-copper">основание</span> для любого объекта
+      {/* QUALITY CONTROL */}
+      <Section id="quality" className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="text-teal font-medium text-sm tracking-widest mb-3 uppercase">Технический контроль</div>
+            <h2 className="font-display font-semibold text-4xl md:text-5xl mb-4">
+              Контроль <span className="text-gradient-copper">качества</span> на каждом этапе
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Надёжное и долговечное решение для строительства фундаментов. Высокое качество материалов и исполнения на каждом этапе.
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Многоступенчатая система контроля гарантирует надёжность и долговечность каждой металлоконструкции — от поступления металла до отгрузки готового изделия.
             </p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="relative rounded-3xl overflow-hidden card-hover glow-copper group">
+              <img src={OBJ_3} alt="Контроль качества" className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+              <div className="absolute bottom-6 left-6 glass rounded-xl px-4 py-3">
+                <div className="text-teal font-display font-semibold text-lg">5 ступеней</div>
+                <div className="text-xs text-muted-foreground">полного технического контроля</div>
+              </div>
+            </div>
             <div className="space-y-4">
-              {['Закладные детали фундамента', 'Арматурные каркасы', 'Контроль качества материалов'].map((t) => (
-                <div key={t} className="flex items-center gap-3 glass rounded-xl px-5 py-4 card-hover">
-                  <div className="w-10 h-10 rounded-lg bg-copper/20 flex items-center justify-center shrink-0">
-                    <Icon name="CheckCircle2" size={20} className="text-copper-light" />
+              {qcStages.map((s, i) => (
+                <div key={i} className="flex items-start gap-4 glass rounded-2xl px-5 py-4 card-hover shine group">
+                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-copper/20 to-teal/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Icon name={s.icon} size={22} className="text-copper-light" fallback="ShieldCheck" />
                   </div>
-                  <span className="text-foreground/90 font-medium">{t}</span>
+                  <div>
+                    <h3 className="font-display font-medium text-lg leading-snug">{s.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-          <div className="relative rounded-3xl overflow-hidden card-hover group">
-            <img src={IMG_TOWER} alt="Фундаменты" className="w-full h-[440px] object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
           </div>
         </div>
       </Section>
@@ -366,12 +391,12 @@ export default function Index() {
             <h2 className="font-display font-semibold text-4xl md:text-5xl">Наши <span className="text-gradient-copper">объекты</span></h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {[IMG_TOWER, IMG_WELD, IMG_PLASMA, IMG_WELD, IMG_PLASMA, IMG_TOWER, IMG_WELD, IMG_TOWER].map((img, i) => (
+            {galleryImgs.map((img, i) => (
               <div key={i} className={`rounded-2xl overflow-hidden card-hover group ${i % 3 === 0 ? 'row-span-2' : ''}`}>
                 <img
                   src={img}
-                  alt={`Объект ${i + 1}`}
-                  className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${i % 3 === 0 ? 'h-full min-h-[300px]' : 'h-40'} ${i % 2 === 0 ? '' : 'grayscale group-hover:grayscale-0'}`}
+                  alt={`Объект МК СКЭ ${i + 1}`}
+                  className={`w-full object-cover group-hover:scale-110 transition-transform duration-700 ${i % 3 === 0 ? 'h-full min-h-[320px]' : 'h-44'}`}
                 />
               </div>
             ))}
