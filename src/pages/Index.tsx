@@ -28,11 +28,25 @@ const qcStages = [
 const nav = [
   { label: 'О нас', id: 'about' },
   { label: 'Продукция', id: 'products' },
-  { label: 'Оборудование', id: 'equipment' },
   { label: 'Цикл', id: 'cycle' },
   { label: 'Контроль', id: 'quality' },
-  { label: 'Галерея', id: 'gallery' },
+  { label: 'Команда', id: 'team' },
+  { label: 'Транспорт', id: 'transport' },
   { label: 'Контакты', id: 'contacts' },
+];
+
+const team = [
+  { name: 'Трофимов Е.П.', role: 'Генеральный директор', quote: 'Качество — это не цель, это стандарт нашей работы.', icon: 'Crown' },
+  { name: 'Кужамбетов М.О.', role: 'Директор производства', quote: 'Каждая опора проходит через мои руки и мой контроль.', icon: 'Factory' },
+  { name: 'Баимов А.С.', role: 'Инженер по развитию', quote: 'Мы внедряем технологии завтрашнего дня уже сегодня.', icon: 'Lightbulb' },
+  { name: 'Хаметов М.', role: 'Коммерческий директор', quote: 'Работаем честно и без посредников — напрямую с заказчиком.', icon: 'Briefcase' },
+];
+
+const transport = [
+  { title: 'Автокран 32 т', desc: 'Монтаж высотных металлоконструкций', icon: 'ConstructionIcon' },
+  { title: 'КМУ с буровым', desc: 'Установка опор и бурение фундаментов', icon: 'Drill' },
+  { title: 'Тягачи', desc: 'Перевозка негабаритных конструкций', icon: 'Truck' },
+  { title: 'Грузовики', desc: 'Доставка изделий по всей России', icon: 'TruckIcon' },
 ];
 
 const stats = [
@@ -379,6 +393,67 @@ export default function Index() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* TEAM */}
+      <Section id="team" className="py-24 bg-gradient-to-b from-transparent via-secondary/20 to-transparent">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="text-teal font-medium text-sm tracking-widest mb-3 uppercase">Руководство</div>
+            <h2 className="font-display font-semibold text-4xl md:text-5xl">Наша <span className="text-gradient-copper">команда</span></h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {team.map((m, i) => (
+              <div key={i} className="flip-card h-72">
+                <div className="flip-inner">
+                  <div className="flip-front glass rounded-2xl p-8 flex flex-col items-center justify-center text-center glow-copper">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-copper/30 to-teal/10 flex items-center justify-center mb-5">
+                      <Icon name={m.icon} size={34} className="text-copper-light" fallback="User" />
+                    </div>
+                    <h3 className="font-display font-semibold text-xl mb-1">{m.name}</h3>
+                    <p className="text-teal text-sm">{m.role}</p>
+                  </div>
+                  <div className="flip-back glass rounded-2xl p-8 flex flex-col items-center justify-center text-center border border-copper/30">
+                    <Icon name="Quote" size={28} className="text-copper mb-4" />
+                    <p className="text-foreground/90 italic leading-relaxed">«{m.quote}»</p>
+                    <p className="text-teal text-sm mt-4 font-medium">{m.name}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* TRANSPORT */}
+      <Section id="transport" className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <div className="text-teal font-medium text-sm tracking-widest mb-3 uppercase">Транспортный отдел</div>
+            <h2 className="font-display font-semibold text-4xl md:text-5xl mb-4">Собственная <span className="text-gradient-copper">техника</span></h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Допуски Ростехнадзора, опыт работы с ГАЗПРОМ и РОСНЕФТЬ, доставка металлоконструкций по всей России.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {transport.map((t, i) => (
+              <div key={i} className="glass rounded-2xl p-8 card-hover shine group text-center">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-copper/20 to-teal/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <Icon name={t.icon} size={30} className="text-copper-light" fallback="Truck" />
+                </div>
+                <h3 className="font-display font-semibold text-xl mb-2">{t.title}</h3>
+                <p className="text-muted-foreground text-sm">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 mt-12">
+            {['Допуски Ростехнадзора', 'ГАЗПРОМ', 'РОСНЕФТЬ', 'Доставка по РФ'].map((b) => (
+              <span key={b} className="glass rounded-full px-5 py-2.5 text-sm text-gold border border-gold/30 flex items-center gap-2">
+                <Icon name="BadgeCheck" size={16} /> {b}
+              </span>
+            ))}
           </div>
         </div>
       </Section>
