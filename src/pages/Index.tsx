@@ -113,7 +113,10 @@ function Section({ id, children, className = '' }: { id?: string; children: Reac
     <section
       id={id}
       ref={ref}
-      className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${className}`}
+      style={{
+        transition: 'opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1), filter 0.9s ease',
+      }}
+      className={`${visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-12 blur-sm'} ${className}`}
     >
       {children}
     </section>
@@ -207,26 +210,43 @@ export default function Index() {
       {/* HERO */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={IMG_WELD} alt="Сварка металлоконструкций" className="w-full h-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/75 to-background" />
+          <img src={IMG_WELD} alt="Сварка металлоконструкций" className="w-full h-full object-cover opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
         </div>
+
+        {/* Плывущие световые блики (aurora) */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-20 left-[10%] w-[420px] h-[420px] rounded-full bg-copper/20 blur-[120px] animate-drift" />
+          <div className="absolute top-1/3 right-[8%] w-[380px] h-[380px] rounded-full bg-teal/20 blur-[120px] animate-drift-slow" />
+          <div className="absolute bottom-0 left-1/3 w-[460px] h-[460px] rounded-full bg-[hsl(224,70%,45%)]/25 blur-[140px] animate-drift" />
+        </div>
+
+        {/* Вращающиеся декоративные инженерные кольца */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30">
+          <div className="w-[560px] h-[560px] md:w-[720px] md:h-[720px] rounded-full border border-teal/20 animate-spin-slow" />
+          <div className="absolute inset-10 rounded-full border border-copper/20 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '32s' }} />
+          <div className="absolute inset-24 rounded-full border border-dashed border-gold/15 animate-spin-slow" style={{ animationDuration: '40s' }} />
+        </div>
+
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-8 animate-fade-up">
-            <span className="w-2 h-2 rounded-full bg-teal animate-pulse" />
+            <span className="relative flex w-2 h-2">
+              <span className="absolute inset-0 rounded-full bg-teal animate-ping-soft" />
+              <span className="relative w-2 h-2 rounded-full bg-teal" />
+            </span>
             <span className="text-xs font-medium text-teal tracking-wide">ЗАВОД ПОЛНОГО ЦИКЛА · ОРЕНБУРГ</span>
           </div>
-          <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl tracking-wider mb-6">
-            <span className="text-gradient-copper glow-text">{typed}</span>
-            <span className="animate-blink border-r-4 border-copper ml-2" />
+          <h1 className="font-display font-bold text-6xl md:text-8xl lg:text-9xl tracking-wider mb-6 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+            <span className="text-gradient-copper glow-text">{typed || 'МК СКЭ'}</span>
           </h1>
-          <p className="text-lg md:text-2xl text-foreground/90 font-light max-w-2xl mx-auto mb-10 font-display tracking-wide">
+          <p className="text-lg md:text-2xl text-foreground/90 font-light max-w-2xl mx-auto mb-10 font-display tracking-wide animate-fade-up" style={{ animationDelay: '0.3s' }}>
             Мы делаем опоры.<br className="md:hidden" /> Мы производим металлоконструкции.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '0.5s' }}>
             <Button
               onClick={() => scrollTo('contacts')}
               size="lg"
-              className="bg-gradient-to-r from-copper to-gold text-white font-semibold text-base px-8 py-6 glow-copper border-0 hover:scale-105 transition-transform"
+              className="bg-gradient-to-r from-copper to-gold text-white font-semibold text-base px-8 py-6 glow-copper border-0 hover-lift"
             >
               <Icon name="Calculator" size={20} className="mr-2" />
               Запросить расчёт
@@ -301,9 +321,12 @@ export default function Index() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p, i) => (
-              <div key={i} className="glass rounded-2xl p-8 card-hover shine group">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-copper/20 to-teal/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <Icon name={p.icon} size={28} className="text-copper-light" />
+              <div key={i} className="glass rounded-2xl p-8 card-hover shine gradient-border group">
+                <div className="relative w-14 h-14 mb-5">
+                  <div className="absolute inset-0 rounded-xl border border-teal/30 animate-spin-slow" />
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-copper/20 to-teal/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Icon name={p.icon} size={28} className="text-copper-light" />
+                  </div>
                 </div>
                 <h3 className="font-display font-semibold text-2xl mb-2">{p.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
