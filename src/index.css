@@ -4,40 +4,40 @@
 
 @layer base {
   :root {
-    --background: 213 54% 6%;
-    --foreground: 44 25% 96%;
+    --background: 210 40% 97%;
+    --foreground: 213 45% 12%;
 
-    --card: 209 47% 11%;
-    --card-foreground: 44 25% 96%;
+    --card: 0 0% 100%;
+    --card-foreground: 213 45% 12%;
 
-    --popover: 209 47% 11%;
-    --popover-foreground: 44 25% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 45% 12%;
 
-    --primary: 22 90% 48%;
-    --primary-foreground: 44 25% 96%;
+    --primary: 22 90% 46%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 209 38% 15%;
-    --secondary-foreground: 44 25% 96%;
+    --secondary: 210 32% 92%;
+    --secondary-foreground: 213 45% 12%;
 
-    --muted: 209 38% 15%;
-    --muted-foreground: 210 15% 62%;
+    --muted: 210 32% 92%;
+    --muted-foreground: 213 15% 42%;
 
-    --accent: 168 100% 45%;
-    --accent-foreground: 213 54% 6%;
+    --accent: 174 72% 38%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 44 25% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 209 30% 18%;
-    --input: 209 30% 18%;
-    --ring: 22 90% 48%;
+    --border: 213 22% 85%;
+    --input: 213 22% 85%;
+    --ring: 22 90% 46%;
 
     --radius: 0.75rem;
 
-    --copper: 22 90% 48%;
-    --copper-light: 20 100% 62%;
-    --teal: 168 100% 45%;
-    --gold: 44 55% 54%;
+    --copper: 22 90% 46%;
+    --copper-light: 20 92% 52%;
+    --teal: 174 72% 38%;
+    --gold: 42 62% 44%;
   }
 }
 
@@ -56,12 +56,12 @@
     background-image:
       radial-gradient(
         ellipse 80% 50% at 50% -10%,
-        hsl(22 90% 48% / 0.12),
+        hsl(22 90% 46% / 0.1),
         transparent
       ),
       radial-gradient(
         ellipse 60% 50% at 100% 100%,
-        hsl(168 100% 45% / 0.08),
+        hsl(174 72% 38% / 0.08),
         transparent
       );
     background-attachment: fixed;
@@ -79,10 +79,10 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(213 54% 6%);
+    background: hsl(210 32% 92%);
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(hsl(22 90% 48%), hsl(168 100% 45%));
+    background: linear-gradient(hsl(22 90% 46%), hsl(174 72% 38%));
     border-radius: 10px;
   }
 }
@@ -91,25 +91,25 @@
   .glass {
     background: linear-gradient(
       145deg,
-      hsl(209 47% 11% / 0.8),
-      hsl(210 40% 20% / 0.4)
+      hsl(0 0% 100% / 0.9),
+      hsl(210 40% 96% / 0.7)
     );
     backdrop-filter: blur(12px);
-    border: 1px solid hsl(209 30% 22% / 0.6);
+    border: 1px solid hsl(213 22% 85% / 0.8);
   }
 
   .glow-copper {
     box-shadow:
-      0 0 40px hsl(22 90% 48% / 0.35),
-      0 0 80px hsl(22 90% 48% / 0.15);
+      0 0 40px hsl(22 90% 46% / 0.22),
+      0 12px 40px hsl(213 45% 12% / 0.1);
   }
 
   .glow-text {
-    text-shadow: 0 0 30px hsl(22 90% 48% / 0.5);
+    text-shadow: 0 2px 20px hsl(22 90% 46% / 0.25);
   }
 
   .text-gradient-copper {
-    background: linear-gradient(120deg, hsl(20 100% 62%), hsl(44 55% 54%));
+    background: linear-gradient(120deg, hsl(22 90% 46%), hsl(42 62% 44%));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

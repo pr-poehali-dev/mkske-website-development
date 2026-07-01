@@ -207,8 +207,8 @@ export default function Index() {
       {/* HERO */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={IMG_WELD} alt="Сварка металлоконструкций" className="w-full h-full object-cover opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+          <img src={IMG_WELD} alt="Сварка металлоконструкций" className="w-full h-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/75 to-background" />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-8 animate-fade-up">
